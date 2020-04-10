@@ -23,3 +23,12 @@ Todo:
       feels like a shit solution.
       Lets just move all of the config and setup to the init file.
       !! This seems to have actually worked noww ith docker-compose?
+
+Wider Architecture:
+  ☐ Decide on whether I want to tightly couple this app with other planned infrastructure.
+    Do I want to put external app specific logic, such as for payloads, in to this service. Or do I want to keep this
+    service fairly generic and, for instance, pass through any request body data not within our 'user' definition
+    in to the JWT, so other services can auth, passing extra data to embed in the JWT for them to send on to more services?
+    Thoughts here, `App (Creds, Extra Data) -> Auth Service (JWT) -> App (JWT) -> [Server 1, Server 2, Server 3]`
+    Another thing to keep in mind, we dont want to overload the JWT with information, only what other services need.
+    UserID being the primary thing.
