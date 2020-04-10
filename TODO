@@ -1,0 +1,25 @@
+Todo:
+  Endpoints:
+    ✔ Login @done
+    ✔ Logout @done
+    ✔ Register @done
+    JWT:
+      ✔ Generate token functionality @done
+      ✔ Validate token functionality @done
+      ☐ Refresh token functionality
+        Is this needed? Are we going to have short/long live tokens
+        We probably should
+  Infrastructure:
+    Docker:
+      ✔ Docker File @done
+      ✔ Docker Compose File @done
+    ✔ Database @done
+      Mongo? Postgres?
+      Leaning towards mongo
+  Mongo:
+    ☐ Look at setting up mongo schema with constraints in `mongo-init.js`
+      With docker-compose, we cant initialise the databases with indexes as the mongo container takes too long
+      to spin up vs our app, so the database isn't reachable. We could set up polling or something but that
+      feels like a shit solution.
+      Lets just move all of the config and setup to the init file.
+      !! This seems to have actually worked noww ith docker-compose?
