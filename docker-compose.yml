@@ -15,8 +15,13 @@ services:
       - MONGO_PORT=27017
       - MONGO_HOST=mongodb
       - MONGO_DB_NAME=authservice
+      - MONGO_USERNAME=
+      - MONGO_PASSWORD=
+      - MONGO_AUTH_SOURCE=
       - BCRYPT_COST_FACTOR=12 # AppMin/Default: 10, Max: 31, Prefer: 12+ (12=200ms Resp|+1 Cost = 2* Resp Time)
+      - JWT_SECRET=
       - JWT_TTL=15
+      - TLS_DOMAINS=
       - GIN_MODE=debug
       - DEBUG=
     depends_on:

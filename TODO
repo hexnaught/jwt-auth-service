@@ -1,4 +1,8 @@
 Todo:
+  ✔ Add AUTOTLS / Cert management within the service @done
+    Might move this to IAC, look in to something like traefik, helm, build pipeline/auto deploys, etc.
+  ✔ Create readme @done
+    Need to add some initial details, running app, env vars, etc
   Endpoints:
     ✔ Login @done
     ✔ Logout @done
@@ -32,3 +36,4 @@ Wider Architecture:
     Thoughts here, `App (Creds, Extra Data) -> Auth Service (JWT) -> App (JWT) -> [Server 1, Server 2, Server 3]`
     Another thing to keep in mind, we dont want to overload the JWT with information, only what other services need.
     UserID being the primary thing.
+  ☐ Look in to using traefik
