@@ -28,14 +28,14 @@ func main() {
 	// otherwise we fall back to running the service on :8080
 	certManager, err := setupCertManager()
 	if err != nil {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "8080"
+		}
 
-	router.Run(
-		fmt.Sprintf("%s:%s", os.Getenv("ADDRESS"), port),
-	)
+		router.Run(
+			fmt.Sprintf("%s:%s", os.Getenv("ADDRESS"), port),
+		)
 	} else {
 		log.Fatal(autotls.RunWithManager(router, certManager))
 	}
