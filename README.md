@@ -11,7 +11,7 @@ There are some default environment variables set in the `docker-compose.yml` fil
 | Environment Variable | Example Value | Notes |
 | -------------------- | ------------- | ----- |
 | `MONGO_PORT` | `27017` | The port the mongo container will run on. If changed, you also need to change the port exposed in the `docker-compose` file. |
-| `MONGO_HOST` | `mongodb | 172.16.X.X` | The address of the mongo instance, the service uses this to connect to mongo. If connecting to an instance of mongo not in the docker-compose stack, i.e. on the local network, you also need to set the following env vars; `MONGO_USERNAME`, `MONGO_PASSWORD`, `MONGO_AUTH_SOURCE`. |
+| `MONGO_HOST` | `mongodb` \| `172.16.X.X` | The address of the mongo instance, the service uses this to connect to mongo. If connecting to an instance of mongo not in the docker-compose stack, i.e. on the local network, you also need to set the following env vars; `MONGO_USERNAME`, `MONGO_PASSWORD`, `MONGO_AUTH_SOURCE`. |
 | `MONGO_DB_NAME` | `authservice` | The name of the mongo database the service will use |
 | `MONGO_USERNAME` | `auth_service_user` | Username used to authenticate with mongo |
 | `MONGO_PASSWORD` | `auth_5erv1ce_p4ssw0rd` | Password used to authenticate with mongo |
@@ -20,8 +20,8 @@ There are some default environment variables set in the `docker-compose.yml` fil
 | `JWT_SECRET` | `jwt_5ecr3t` | Secret used for generating and verifying JWT signatures. See **https://jwt.io** for more information. |
 | `JWT_TTL` | `15` | Time to live in minutes for the token, tokens will expire after this time has passed. |
 | `CERT_DOMAINS` | `example.com,test.example.com,example.org` | A comma separated list of domains for `autotls` to attempt to create certificates for. |
-| `GIN_MODE` | `release | debug | test` | Set the mode for GIN to use. |
-| `DEBUG` | `true | false` | Not currently used. |
+| `GIN_MODE` | `release` \| `debug` \| `test` | Set the mode for GIN to use. |
+| `DEBUG` | `true` \| `false` | Not currently used. |
 
 ### Run Local:
 
