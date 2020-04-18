@@ -51,7 +51,10 @@ func loginHandler(c *gin.Context) {
 
 	generateToken(fetchedUser)
 
-	c.JSON(http.StatusOK, gin.H{"data": fetchedUser})
+	c.JSON(
+		http.StatusOK,
+		fetchedUser,
+	)
 }
 
 // generateToken is a wrapper for generating the token and nulling the 'password' field
