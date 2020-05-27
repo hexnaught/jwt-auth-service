@@ -21,12 +21,8 @@ Todo:
       Mongo? Postgres?
       Leaning towards mongo
   Mongo:
-    ☐ Look at setting up mongo schema with constraints in `mongo-init.js`
-      With docker-compose, we cant initialise the databases with indexes as the mongo container takes too long
-      to spin up vs our app, so the database isn't reachable. We could set up polling or something but that
-      feels like a shit solution.
-      Lets just move all of the config and setup to the init file.
-      !! This seems to have actually worked now with docker-compose?
+    ✘ Look at setting up mongo schema with constraints in `mongo-init.js` @cancelled
+      Not doing this for now...
 
 Wider Architecture:
   ☐ Decide on whether I want to tightly couple this app with other planned infrastructure.
