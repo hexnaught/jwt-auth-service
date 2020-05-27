@@ -2,7 +2,6 @@ package api
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -13,7 +12,6 @@ func verifyPassword(hashedPassword, password string) bool {
 
 	err := bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
 	if err != nil {
-		log.Printf("password validation error: %+v", err)
 		return false
 	}
 	return true
@@ -22,7 +20,6 @@ func verifyPassword(hashedPassword, password string) bool {
 func hashString(password string) (string, error) {
 	passwordHash, err := bcrypt.GenerateFromPassword([]byte(password), appConfig.BCryptCostFactor)
 	if err != nil {
-		log.Printf("error hashing password: %+v", err)
 		return "", err
 	}
 	return string(passwordHash), nil
