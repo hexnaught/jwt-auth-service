@@ -33,20 +33,23 @@ func main() {
 			port = "8080"
 		}
 
+		log.Printf("App running on %s", fmt.Sprintf("%s:%s", os.Getenv("ADDRESS"), port))
 		router.Run(
 			fmt.Sprintf("%s:%s", os.Getenv("ADDRESS"), port),
 		)
 	} else {
+		log.Printf("AUTOTLS Configured - Running App with TLS")
 		log.Fatal(autotls.RunWithManager(router, certManager))
 	}
 }
 
 // setupCertManager sets up a cert manager and returns it for use in gin
 func setupCertManager() (*autocert.Manager, error) {
-	domains := strings.Split(os.Getenv("TLS_DOMAINS"), ",")
-	if len(domains) == 0 {
+	envVarDomains := os.Getenv("TLS_DOMAINS")
+	if os.Getenv("TLS_DOMAINS") == "" {
 		return &autocert.Manager{}, errors.New("no domains specified when instantiating autocert manager")
 	}
+	domains := strings.Split(envVarDomains, ",")
 
 	os.Mkdir("./certs", 0700)
 

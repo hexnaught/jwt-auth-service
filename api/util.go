@@ -32,9 +32,21 @@ func createToken(userID, username, email string) (string, error) {
 	var err error
 
 	jwtClaims := jwt.MapClaims{
+		"iat":      time.Now().Unix(),
 		"user_id":  userID,
 		"username": username,
-		"exp":      time.Now().Add(time.Minute * time.Duration(appConfig.JWTTTL)).Unix(),
+	}
+
+	if appConfig.JWTTTL != 0 {
+		jwtClaims["exp"] = time.Now().Add(time.Minute * time.Duration(appConfig.JWTTTL)).Unix()
+	}
+
+	if appConfig.JWTISS != "" {
+		jwtClaims["iss"] = appConfig.JWTISS
+	}
+
+	if len(appConfig.JWTAUD) != 0 {
+		jwtClaims["aud"] = appConfig.JWTAUD
 	}
 
 	newJWT := jwt.NewWithClaims(jwt.SigningMethodHS256, jwtClaims)
