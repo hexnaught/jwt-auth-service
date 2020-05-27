@@ -21,6 +21,8 @@ services:
       - BCRYPT_COST_FACTOR=12 # AppMin/Default: 10, Max: 31, Prefer: 12+ (12=200ms Resp|+1 Cost = 2* Resp Time)
       - JWT_SECRET=
       - JWT_TTL=15
+      - JWT_ISS=
+      - JWT_AUD=
       - TLS_DOMAINS=
       - GIN_MODE=debug
       - DEBUG=

@@ -48,10 +48,10 @@ func registerHandler(c *gin.Context) {
 
 	// At this point, the user has registered and all is well, lets also auth
 	// them and inject the token in to the response
-	generateToken(user)
+	token := generateToken(user)
 
 	c.JSON(
 		http.StatusCreated,
-		user,
+		token,
 	)
 }

@@ -49,24 +49,23 @@ func loginHandler(c *gin.Context) {
 	// if it isn't let us rehash the password with the adjusted cost
 	checkAndUpdateUserPasswordHash(fetchedUser, user.Password)
 
-	generateToken(fetchedUser)
+	token := generateToken(fetchedUser)
 
 	c.JSON(
 		http.StatusOK,
-		fetchedUser,
+		token,
 	)
 }
 
 // generateToken is a wrapper for generating the token and nulling the 'password' field
 // we were sent so that it doesn't get returned back to the calling service
-func generateToken(user *model.User) {
+func generateToken(user *model.User) string {
 	token, err := createToken(user.ID.(primitive.ObjectID).Hex(), user.Username, user.Email)
 	if err != nil {
-		return
+		return ""
 	}
 
-	user.Password = ""
-	user.Token = token
+	return token
 }
 
 // checkAndUpdateUserPasswordHash checks the bcrypt cost factor user for the users hashed password after they have
