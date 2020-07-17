@@ -9,9 +9,9 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/autotls"
-	"github.com/jokerdan/jwt-auth-service/api"
-	"github.com/jokerdan/jwt-auth-service/config"
-	"github.com/jokerdan/jwt-auth-service/database"
+	"github.com/hexnaught/jwt-auth-service/api"
+	"github.com/hexnaught/jwt-auth-service/config"
+	"github.com/hexnaught/jwt-auth-service/database"
 	"golang.org/x/crypto/acme/autocert"
 )
 
