@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jokerdan/jwt-auth-service/model"
+	"github.com/hexnaught/jwt-auth-service/model"
 )
 
 // registerHandler handles the creation of a user

@@ -49,23 +49,37 @@ if err != nil {
 
 `go run .`
 
-### Running with Docker
+### Running with Docker Containers
 
-There is the App image that will need built and ran as well as a mongo container that will need to be ran. A third and optional docker container is **Mongo-Express**, a useful web based UI for browsing your mongo collections.
+#### Building the App Docker image
 
-_Building the App Docker image_
+First we must build the image, once built we can call run on it. From the root directory of this project run the following.
 
-`docker build -t jokerdan/jwt-auth-service:v1.0 -t jokerdan/jwt-auth-service:latest .`
+`docker build .`
 
-_Running the App Docker image_
+##### Tagging the image to push to an image repository
 
-`docker run -p 8080:8080 --detach --name auth-service jokerdan/jwt-auth-service`
+Below we are supplying `-t`, tagging it as <username>/jwt-auth-service:<version> where username is your dockerhub or other image repository name. You can tag it multiple times, allowing you to publish a new version also as the latest tag, below we are tagging as both `v1.0` and `latest`.
 
-_Running a MongoDB container_
+This step isn't strictly needed unless you plan on modifying the image and pushing it to a repository to pull and use multiple times.
+
+`docker build -t <username>/jwt-auth-service:v1.0 -t <username>/jwt-auth-service:latest .`
+
+#### Running a MongoDB container
+
+First we need to start a container running docker.
 
 `docker run -p 27017:27017 --name mongoc -v /ProgramData/DockerStore:/DockerResources/data/mongodb mongo`
 
-_Mongo-Express - Tool for viewing MongoDB data/Schema_
+#### Running the App Docker image
+
+Then we can run the docker container for this service. Remember, you may need to change some environment variables and feed them in to the container.
+
+`docker run -p 8080:8080 --detach --name auth-service <username>/jwt-auth-service`
+
+#### Mongo-Express - Tool for viewing MongoDB data/Schema
+
+Optionally, you can run mongo-express which is a web GUI for the mongoDB container we have running.
 
 `docker run -it --rm -p 8081:8081 --link mongoc:mongo mongo-express`
 

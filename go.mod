@@ -1,4 +1,4 @@
-module github.com/jokerdan/jwt-auth-service
+module github.com/hexnaught/jwt-auth-service
 
 go 1.13
 

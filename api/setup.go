@@ -2,8 +2,8 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/jokerdan/jwt-auth-service/config"
-	"github.com/jokerdan/jwt-auth-service/database"
+	"github.com/hexnaught/jwt-auth-service/config"
+	"github.com/hexnaught/jwt-auth-service/database"
 )
 
 var db *database.MongoHelper
