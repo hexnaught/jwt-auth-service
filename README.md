@@ -108,19 +108,16 @@ curl -X POST -H "Content-Type: application/json" \
     -d '{"username":"test_0001","password":"qwerty","email":"test@example.com"}' \
     http://localhost:8080/api/v1/user/register
 
-Invoke-WebRequest http://localhost:8080/api/v1/user/login `
-    -UseBasicParsing `
-	-ContentType "application/json" `
-	-Method POST `
-	-Body '{"username":"test_0001","password":"qwerty"}' | Select-Object -expand RawContent
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"username":"test_0001","password":"qwerty"}' \
+    http://localhost:8080/api/v1/user/login
 ```
 
 ```sh
-$token = ""
-Invoke-WebRequest http://localhost:8080/api/v1/token/validate `
-    -UseBasicParsing `
-	-Method GET `
-	-Header @{Authorization = "Bearer $token"}
+TOKEN="" \
+    curl -X GET -H "Authorization: Bearer ${TOKEN}" \
+    http://localhost:8080/api/v1/token/validate
+
 ```
 
 ### Invoke API via PowerShell
