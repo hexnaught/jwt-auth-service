@@ -2,7 +2,7 @@ version: "3"
 
 services:
   auth-service:
-    image: jokerdan/jwt-auth-service
+    image: hexnaught/jwt-auth-service
     container_name: authservice
     build:
       context: .

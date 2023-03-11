@@ -101,15 +101,39 @@ The mongo-express container is not required for the service to function, I have 
 
 ## Notes
 
+### Invoke API via cURL
+
+```sh
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"username":"test_0001","password":"qwerty","email":"test@example.com"}' \
+    http://localhost:8080/api/v1/user/register
+
+Invoke-WebRequest http://localhost:8080/api/v1/user/login `
+    -UseBasicParsing `
+	-ContentType "application/json" `
+	-Method POST `
+	-Body '{"username":"test_0001","password":"qwerty"}' | Select-Object -expand RawContent
+```
+
+```sh
+$token = ""
+Invoke-WebRequest http://localhost:8080/api/v1/token/validate `
+    -UseBasicParsing `
+	-Method GET `
+	-Header @{Authorization = "Bearer $token"}
+```
+
 ### Invoke API via PowerShell
 
 ```ps1
 Invoke-WebRequest http://localhost:8080/api/v1/user/register `
+    -UseBasicParsing `
 	-ContentType "application/json" `
 	-Method POST `
 	-Body '{"username":"test_0001","password":"qwerty","email":"test@example.com"}' | Select-Object -expand RawContent
 
 Invoke-WebRequest http://localhost:8080/api/v1/user/login `
+    -UseBasicParsing `
 	-ContentType "application/json" `
 	-Method POST `
 	-Body '{"username":"test_0001","password":"qwerty"}' | Select-Object -expand RawContent
@@ -118,6 +142,7 @@ Invoke-WebRequest http://localhost:8080/api/v1/user/login `
 ```ps1
 $token = ""
 Invoke-WebRequest http://localhost:8080/api/v1/token/validate `
+    -UseBasicParsing `
 	-Method GET `
 	-Header @{Authorization = "Bearer $token"}
 ```
@@ -125,4 +150,3 @@ Invoke-WebRequest http://localhost:8080/api/v1/token/validate `
 ### TODO
 
 See the `TODO` file in the root of the repository.
-
